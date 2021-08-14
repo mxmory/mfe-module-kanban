@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Board from 'react-trello';
 
-function App() {
+const mockData = {
+  lanes: [
+    {
+      id: 'lane1',
+      title: 'Planned Tasks',
+      label: '2/2',
+      cards: [
+        {id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins'},
+        {id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins',}
+      ]
+    },
+    {
+      id: 'lane2',
+      title: 'Completed',
+      label: '0/0',
+      cards: [
+        {id: 'Card3', title: 'Write Test', description: 'Aboba', label: '30 mins'},
+      ]
+    }
+  ]
+}
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="kanban-app">
+      <Board data={mockData} draggable style={{backgroundColor: '#fff'}} laneStyle={{backgroundColor: '#eee'}}/>
     </div>
   );
 }
