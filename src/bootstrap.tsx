@@ -3,9 +3,19 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 
-console.log('I am here')
+// Mount function to start up the app
+const mount = (el) => {
+  ReactDOM.render(<App />, el);
+};
 
-ReactDOM.render(
-  <App />,
-  document.getElementById("root")
-);
+// If we are in development and in isolation,
+// call mount immediately
+if (process.env.NODE_ENV === 'development') {
+  const devRoot = document.querySelector('#_kanban-dev-root');
+
+  if (devRoot) {
+    mount(devRoot);
+  }
+}
+
+export { mount };
