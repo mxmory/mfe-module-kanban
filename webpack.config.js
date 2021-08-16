@@ -43,8 +43,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new webpack.DefinePlugin({
-      "process.env.REDUX_LOGGING": JSON.stringify("development"),
-    }),
   ],
 };
