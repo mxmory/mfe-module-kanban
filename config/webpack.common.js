@@ -1,12 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const webpack = require("webpack");
 
 module.exports = {
-  mode: "development",
-  devServer: {
-    port: 8081,
-  },
   module: {
     rules: [
       {
@@ -32,14 +26,6 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
-    new ModuleFederationPlugin({
-      name: "kanban",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./Kanban": "./src/bootstrap.tsx",
-      },
-      //   shared: packageJson.dependencies,
-    }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),

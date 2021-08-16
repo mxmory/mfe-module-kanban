@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === 'development') {
   const devRoot = document.querySelector('#_kanban-dev-root');
 
   if (devRoot) {
+    console.log('Isolated mount')
     mount(devRoot);
   }
 }
