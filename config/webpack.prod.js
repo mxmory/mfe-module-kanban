@@ -3,8 +3,6 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const commonConfig = require("./webpack.common");
 // const packageJson = require("../package.json");
 
-const domain = process.env.PRODUCTION_DOMAIN;
-
 const prodConfig = {
   mode: "production",
   output: {
@@ -13,11 +11,12 @@ const prodConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "container",
-      remotes: {
-        kanban: `kanban@${domain}/marketing/latest/remoteEntry.js`,
+      name: "kanban",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./Kanban": "./src/bootstrap",
       },
-      //   shared: packageJson.dependencies,
+      // shared: packageJson.dependencies,
     }),
   ],
 };
